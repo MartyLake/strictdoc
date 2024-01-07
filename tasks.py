@@ -471,6 +471,7 @@ def lint_mypy(context):
                 --python-version=3.7
         """,
     )
+    # @sdoc[/SDOC-SRS-43]
 
 
 # # @sdoc[/SDOC-SRS-43]
