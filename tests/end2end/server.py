@@ -144,8 +144,11 @@ class SDocTestServer:  # pylint: disable=too-many-instance-attributes
 
     def run(self):
         args = [
-            "python",
-            "strictdoc/cli/main.py",
+            "coverage",
+            "run",
+            "--append",
+            "-m",
+            "strictdoc.cli.main",
             "server",
             "--no-reload",
             "--port",

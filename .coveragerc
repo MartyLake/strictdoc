@@ -2,7 +2,8 @@
 [run]
 branch = True
 omit =
-    */.venv/*
+    build/*
+    tests/*
 
 [report]
 fail_under = 70.0
