@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from strictdoc.backend.sdoc.models.fragment import Fragment
+from strictdoc.backend.sdoc.models.section import SDocSection
 from strictdoc.helpers.auto_described import auto_described
 
 
@@ -16,7 +16,7 @@ class FragmentFromFile:
 
         self.ng_level = None
         self.ng_has_requirements = False
-        self.resolved_fragment: Optional[Fragment] = None
+        self.resolved_fragment: Optional = None
 
     @property
     def document(self):
@@ -38,4 +38,17 @@ class FragmentFromFile:
     @property
     def section_contents(self) -> List:
         assert self.resolved_fragment is not None, self.resolved_fragment
+        if True:
+            wrapping_section = SDocSection(
+                self,
+                mid=None,
+                uid=None,
+                custom_level=None,
+                title=self.resolved_fragment.title,
+                requirement_prefix=self.resolved_fragment.get_requirement_prefix(),
+                free_texts=self.resolved_fragment.free_texts,
+                section_contents=self.resolved_fragment.section_contents,
+            )
+            wrapping_section.ng_level = self.ng_level
+            return [wrapping_section]
         return self.resolved_fragment.section_contents

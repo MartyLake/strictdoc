@@ -6,7 +6,6 @@ from strictdoc.backend.sdoc.models.document_bibliography import (
 from strictdoc.backend.sdoc.models.document_config import DocumentConfig
 from strictdoc.backend.sdoc.models.document_grammar import DocumentGrammar
 from strictdoc.backend.sdoc.models.document_view import DocumentView
-from strictdoc.backend.sdoc.models.fragment_from_file import FragmentFromFile
 from strictdoc.backend.sdoc.models.free_text import FreeText
 from strictdoc.core.document_meta import DocumentMeta
 from strictdoc.helpers.auto_described import auto_described
@@ -43,6 +42,9 @@ class SDocDocument:  # pylint: disable=too-many-instance-attributes
         self.free_texts: List[FreeText] = free_texts
         self.section_contents = section_contents
 
+        # FIXME: Plain list of all fragments found in the document.
+        self.fragments_from_files: List = []
+
         self.ng_level: int = 0
         self.ng_needs_generation = False
         self.ng_uses_old_refs_field: bool = False
@@ -75,6 +77,10 @@ class SDocDocument:  # pylint: disable=too-many-instance-attributes
         return False
 
     def has_any_requirements(self) -> bool:
+        from strictdoc.backend.sdoc.models.fragment_from_file import (
+            FragmentFromFile,
+        )
+
         task_list = list(self.section_contents)
         while len(task_list) > 0:
             section_or_requirement = task_list.pop(0)

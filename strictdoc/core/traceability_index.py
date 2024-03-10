@@ -341,7 +341,9 @@ class TraceabilityIndex:  # pylint: disable=too-many-public-methods, too-many-in
         assert isinstance(uid, str), uid
         for document in self.document_tree.document_list:
             document_iterator = DocumentCachingIterator(document)
-            for node in document_iterator.all_content():
+            for node in document_iterator.all_content(
+                print_fragments=False, print_fragments_from_files=False
+            ):
                 if isinstance(node, SDocDocument):
                     if node.config.uid == uid:
                         return node
@@ -710,7 +712,9 @@ class TraceabilityIndex:  # pylint: disable=too-many-public-methods, too-many-in
     ):
         assert document != other_document
 
-        for node in self.document_iterators[document].all_content(document):
+        for node in self.document_iterators[document].all_content(
+            print_fragments=False, print_fragments_from_files=False
+        ):
             if not node.is_requirement:
                 continue
             requirement_node: SDocNode = node
