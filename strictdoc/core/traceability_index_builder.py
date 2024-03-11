@@ -626,6 +626,7 @@ class TraceabilityIndexBuilder:
                     fragment_from_file_.file
                 ]
                 fragment_from_file_.resolved_fragment = resolved_document
+                resolved_document.section_contents[0].ng_document_reference.set_document(document_)
 
         return traceability_index
 

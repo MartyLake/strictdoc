@@ -113,9 +113,12 @@ class SDocParsingProcessor:
             fragment_from_file, FragmentFromFile
         ), fragment_from_file
 
+        fragment_from_file.ng_document_reference = (
+            self.parse_context.document_reference
+        )
+
         self._resolve_parents(fragment_from_file)
         self.parse_context.current_include_parent = fragment_from_file.parent
-
         self.parse_context.fragments_from_files.append(fragment_from_file)
 
     def process_composite_requirement(

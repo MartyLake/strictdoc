@@ -1,5 +1,6 @@
 from typing import List, Optional
 
+from strictdoc.backend.sdoc.document_reference import DocumentReference
 from strictdoc.backend.sdoc.models.section import SDocSection
 from strictdoc.helpers.auto_described import auto_described
 
@@ -16,6 +17,8 @@ class FragmentFromFile:
 
         self.ng_level = None
         self.ng_has_requirements = False
+        self.ng_document_reference: Optional[DocumentReference] = None
+
         self.resolved_fragment: Optional = None
 
     @property
