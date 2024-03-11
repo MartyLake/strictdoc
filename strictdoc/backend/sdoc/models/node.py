@@ -315,6 +315,10 @@ class SDocNode(SDocObject):
         ), "A valid requirement must always have a reference to the document."
         return document
 
+    def document_is_included(self):
+        # FIXME
+        return True
+
     def get_requirement_style_mode(self):
         return (
             self.ng_document_reference.get_document().config.get_requirement_style_mode()  # noqa: E501
@@ -637,6 +641,10 @@ class CompositeRequirement(SDocNode):
     @property
     def document(self):
         return self.ng_document_reference.get_document()
+
+    def document_is_included(self):
+        # FIXME
+        return True
 
     def get_requirement_prefix(self) -> str:
         return self.parent.get_requirement_prefix()

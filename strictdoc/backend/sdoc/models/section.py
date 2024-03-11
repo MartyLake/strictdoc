@@ -69,6 +69,10 @@ class SDocSection(SDocObject):  # pylint: disable=too-many-instance-attributes
     def document(self):
         return self.ng_document_reference.get_document()
 
+    def document_is_included(self):
+        # FIXME
+        return True
+
     @property
     def is_requirement(self):
         return False
