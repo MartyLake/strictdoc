@@ -5,17 +5,17 @@ from textx import metamodel_from_str
 
 from strictdoc.backend.sdoc.error_handling import StrictDocSemanticError
 from strictdoc.backend.sdoc.grammar.grammar_builder import SDocGrammarBuilder
-from strictdoc.backend.sdoc.models.constants import INCLUDE_MODELS
+from strictdoc.backend.sdoc.models.constants import GRAMMAR_MODELS
 from strictdoc.backend.sdoc.processor import ParseContext, SDocParsingProcessor
 from strictdoc.helpers.textx import drop_textx_meta
 
 
-class SDIncludeReader:
+class SDocGrammarReader:
     @staticmethod
     def read(input_string, parse_context: ParseContext, file_path=None):
         meta_model = metamodel_from_str(
             SDocGrammarBuilder.create_fragment_grammar(),
-            classes=INCLUDE_MODELS,
+            classes=GRAMMAR_MODELS,
             use_regexp_group=True,
         )
         assert isinstance(parse_context, ParseContext)

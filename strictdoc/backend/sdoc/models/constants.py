@@ -64,10 +64,13 @@ SECTION_MODELS = [
     BibEntry,
 ]
 
+GRAMMAR_MODELS = [
+    DocumentGrammar,
+]
+
 DOCUMENT_MODELS = [
     DocumentConfig,
     SDocDocument,
-    DocumentGrammar,
     DocumentView,
     DocumentBibliography,
     GrammarElement,
@@ -85,4 +88,5 @@ DOCUMENT_MODELS = [
     ViewElementTags,
     ViewElementHiddenTag,
 ]
+DOCUMENT_MODELS.extend(GRAMMAR_MODELS)
 DOCUMENT_MODELS.extend(SECTION_MODELS)
